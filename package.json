@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "start": "node dist/server.js",
-    "build": "tsc"
+    "start": "pm2 start dist/server.js",
+    "build": "tsc",
+    "stop": "pm2 stop all"
   },
   "dependencies": {
     "cors": "^2.8.5",
