@@ -8,6 +8,7 @@ app.use(cors());
 interface NameEntry {
   name: string;
   time: string;
+  phrase: string;
 }
 
 let names: NameEntry[] = [];
@@ -18,15 +19,15 @@ const formatTime = (date: Date): string => {
   return `${hours}:${minutes}`;
 };
 
-app.get("/names", (req: Request, res: Response) => {
+app.get("/api/main", (req: Request, res: Response) => {
   res.json(names);
 });
 
-app.post("/names", (req: Request, res: Response) => {
-  const { name } = req.body;
+app.post("/api/main", (req: Request, res: Response) => {
+  const { name, phrase } = req.body;
   if (name) {
     const time = formatTime(new Date());
-    names.push({ name, time });
+    names.push({ name, time, phrase });
 
     if (names.length > 20) {
       names = names.slice(-10);
@@ -34,7 +35,7 @@ app.post("/names", (req: Request, res: Response) => {
 
     res.status(201).json({ name, time });
   } else {
-    res.status(400).json({ error: "Name is required" });
+    res.status(400).json({ error: "Error while request" });
   }
 });
 
