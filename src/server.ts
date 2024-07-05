@@ -20,15 +20,16 @@ const formatTime = (date: Date): string => {
 };
 
 app.get("/api", (req: Request, res: Response) => {
-  res.json(names);
+  res.status(200).json(names);
 });
 
 app.get("/", (req: Request, res: Response) => {
-  res.status(200).json("Server response!")
+  res.status(200).json("Server response!");
 });
 
 app.post("/api", (req: Request, res: Response) => {
   const { name, phrase } = req.body;
+
   if (name) {
     const time = formatTime(new Date());
     names.push({ name, time, phrase });
@@ -37,13 +38,13 @@ app.post("/api", (req: Request, res: Response) => {
       names = names.slice(-10);
     }
 
-    res.status(201).json({ name, time });
+    res.status(201).json({ name, time, phrase });
   } else {
     res.status(400).json({ error: "Error while request" });
   }
 });
 
-const PORT = 80;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
