@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "pm2 start dist/server.js",
+    "start": "tsc && pm2 start dist/server.js",
     "build": "tsc",
     "stop": "pm2 stop all"
   },
