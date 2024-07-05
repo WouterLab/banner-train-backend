@@ -27,8 +27,9 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).json("Server response!");
 });
 
-app.get("/clear/all", (req: Request, res: Response) => {
+app.get("/api/clear/all", (req: Request, res: Response) => {
   names = [];
+  res.status(200).json("All data cleared.");
 });
 
 app.post("/api", (req: Request, res: Response) => {
