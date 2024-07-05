@@ -19,11 +19,11 @@ const formatTime = (date: Date): string => {
   return `${hours}:${minutes}`;
 };
 
-app.get("/api", (req: Request, res: Response) => {
+app.get("/api", (res: Response) => {
   res.status(200).json(names);
 });
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (res: Response) => {
   res.status(200).json("Server response!");
 });
 
@@ -44,7 +44,7 @@ app.post("/api", (req: Request, res: Response) => {
   }
 });
 
-const PORT = 3000;
+const PORT = 80;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
