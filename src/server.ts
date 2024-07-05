@@ -19,11 +19,11 @@ const formatTime = (date: Date): string => {
   return `${hours}:${minutes}`;
 };
 
-app.get("/api", (res: Response) => {
+app.get("/api", (req: Request, res: Response) => {
   res.status(200).json(names);
 });
 
-app.get("/", (res: Response) => {
+app.get("/", (req: Request, res: Response) => {
   res.status(200).json("Server response!");
 });
 
