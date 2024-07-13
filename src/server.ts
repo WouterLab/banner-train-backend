@@ -35,6 +35,12 @@ app.get("/api/clear/all", (req: Request, res: Response) => {
 app.post("/api", (req: Request, res: Response) => {
   const { name, phrase } = req.body;
 
+  const fullText = name + phrase;
+
+  if (fullText.replace(/\s/g, "") === "") {
+    return;
+  }
+
   if (phrase) {
     const time = formatTime(new Date());
     names.push({ name, time, phrase });
